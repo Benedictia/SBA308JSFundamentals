@@ -1,4 +1,4 @@
-  // Step 1: Define data structures
+  //Analyzing and transforming provided data
 
 const courseInfo = {
   id: 451,
@@ -33,7 +33,7 @@ const assignmentGroup = {
     }
   ];
  
-//looping through the assignment using forEach
+//looping through the assignment data using forEach
 
 console.log(`The ID of the course the assignment group belongs to "course_id": ${assignmentGroup.id}`);
 
