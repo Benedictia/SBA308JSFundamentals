@@ -1,4 +1,4 @@
-// Step 1: Define data structures
+  // Step 1: Define data structures
 
 const courseInfo = {
   id: 451,
@@ -152,3 +152,65 @@ function getDueAssignments(assignments) {
 // // Get due assignments and display them
 const dueAssignments = getDueAssignments(assignments);
 console.log("Due Assignments with Reduced Points:", (dueAssignments) );
+
+//identifying mismatched course id
+//let mismatchingCourse_id = 1095; 
+// let course_id = 451; 
+// function checkCourseId ( mismatchingCourse_id, expected_course_id)
+// {
+
+// if ( mismatchingCourse_id !== expected_course_id) {
+//   console.log(`Error:The assigned course ID ${expected_course_id } is incorrect.`);
+// } else {
+//   console.log(course_id);
+// }
+// }
+
+//Modified data for testing and error handling
+const assignments1 = [
+  {
+    id: 1,
+    name: "Declare a Variable",
+    due_at: "NaN",
+    points_possible: 50
+  },
+  {
+    id: 2,
+    name: "Write a Function",
+    due_at: "",
+    points_possible: 150
+  },
+  {
+    id: 3,
+    name: "Code the World",
+    due_at: "3156-11-15",
+    points_possible: 500
+  }
+];
+
+
+
+// Function to validate assignments
+for (let i = 0; i < assignments1.length; i++) {
+  const assignment = assignments1[i];
+
+  try {
+    // Check if the assignment object has the required properties
+    if (!assignment.id || !assignment.name || !assignment.due_at || !assignment.points_possible) {
+      throw new Error(`Incomplete assignment data for ID: ${assignment.id}`);
+    }
+
+    // Validate due_at: Check for valid date
+    const dueDate = new Date(assignment.due_at);
+    if (isNaN(dueDate.getTime())) {
+      throw new Error(`Invalid due date for assignment ID: ${assignment.id}`);
+    }
+
+    // Log the assignment details
+    console.log(`Assignment ID: ${assignment.id}, Name: ${assignment.name}, Due Date: ${assignment.due_at}, Points Possible: ${assignment.points_possible}`);
+
+  } catch (error) {
+    // Handle the error and log the message
+    console.error(error.message);
+  }
+}
